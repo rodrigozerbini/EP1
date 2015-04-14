@@ -1,0 +1,57 @@
+Pseudocódigo
+
+- ler d, n, v/u
+- alocar aleatoriamente os n ciclistas nas primeiras n/4 posições da pista (teto de n/4)
+
+for (i = 0; i < teto(n/4); i++) {
+	for(j = 0; j < 4; j++) {
+		selecionar um ciclista aleatoriamente e colocar 		em pista[i];
+}
+} 
+
+struct pista {  /* trecho de 1m da pista */
+
+vetor de 4 ciclistas; /* inicializado com NULL 
+				  em todas as posições */
+}
+
+/* como fazer um vetor de structs? */
+
+struct ciclista {
+
+int id;
+int volta;
+int posicao; /* posicao na pista */
+int classificao; /* classificao na corrida */
+int velocidade;
+
+}
+
+thread ciclista {
+
+int intervalo; /* intervalo de 72ms */
+float dist_percorrida = 0;
+
+while(true) {
+	intervalo++;
+	if (velocidade do ciclista == 50 || intervalo%2 == 0)
+	{
+		dist_percorrida += 1; /* 1m */
+		prox_pos = ciclista.posicao + dist_percorrida;
+      }
+	else prox_pos = ciclista.posicao;
+
+/* tem que esperar o intervalo passar para todos os ciclistas */
+	<await(pista[prox_pos] ter vaga) 
+ 	 add(ciclista, pista[prox_pos]); > 
+}
+}
+
+Outras estruturas:
+- lista de ciclistas quebrados
+- vetor classificacao[n+1] (classificacao[i] = j significa que na posição i está o ciclista cujo id é j)
+
+x x x  10 ciclistas em 3 metros
+x x x  
+  x x
+  x x 

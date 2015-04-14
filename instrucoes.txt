@@ -1,0 +1,46 @@
+- A cada 2 voltas, o último ciclista é desclassificado
+
+- O velódromo tem d metros e n ciclistas (d > 249 e n > 3)
+
+- A posição inicial de cada ciclista deve ser definida de forma aleatória
+
+- A quantidade de ciclistas q é no máximo o teto de d/2
+
+- Cada ciclista ocupa 1 metro da pista 
+
+- A qualquer momento, existem no máximo 4 ciclistas lado a lado em cada ponto da pista
+
+- Preciso criar n threads “ciclista”
+
+- Duas opções de execução:
+
+1. Todos os ciclistas tem velocidade = 50km/h (1m/72ms)
+
+2. Todos os ciclistas tem velocidade = 25km/h na primeira volta e a partir da segunda volta tem velocidade = 25 ou 50km/h (definir aleatoriamente)
+
+- Vetor compartilhado “pista” que tem tamanho d (cada posição do vetor é 1 metro da pista)
+
+- Cada posição do vetor deve ter os identificadores dos ciclistas naquele trecho (no máximo 4)
+
+- A simulação da corrida deve ocorrer em intervalos de 72ms (1m percorrido se v = 50km/h e 0,5m para v = 25km/h)
+
+- Cada thread “ciclista” tem que escrever seu id na nova posição correta do vetor “pista” e de remover da posição antiga
+
+- A cada 4 voltas, um ciclista aleatório tem 1% de chance de quebrar (se quebrar, exibir na tela: a volta em que ele estava, posição, identificador do ciclista)
+
+- Em caso de quebra ou eliminação, a thread do ciclista deve ser destruída
+
+- A probabilidade de quebra deixa de existir quando houverem apenas 3 ciclistas na pista
+
+- A cada volta completada, exibir os 3 últimos colocados (eliminado, penúltimo e antepenúltimo) 
+
+- Ao término da corrida, a classificação final deve ser informada (destacando as medalhas de ouro, prata, bronze), os ciclistas que quebraram e a posição deles dependendo da volta em que quebraram
+
+- Empates devem ser resolvidos de forma aleatória
+
+- Opção debug: exibir a cada 14,4s uma lista dos ciclistas com a volta e posição em que eles estão (14,4s = 200m percorridos na velocidade de 50km/h, considerando que sempre há espaço para o ciclista avançar)
+
+- Entrada do programa: d n [v|u]
+
+d: comprimento do velódromo (>249)
+n: número de ciclistas (>3)
